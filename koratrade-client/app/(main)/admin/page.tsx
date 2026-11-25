@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import { ShieldAlert } from "lucide-react";
-import { Badge, PageHeader, Panel, Stat, ButtonLink } from "@/components/ui";
+import Link from "next/link";
+import { Badge, PageHeader, Panel, Stat } from "@/components/ui";
 import { SAMPLE_USERS, type DemoUser, usd } from "@/lib/demo-data";
 import { useAuth } from "@/lib/AuthContext";
 
@@ -80,7 +81,12 @@ export default function AdminPage() {
         <ShieldAlert size={56} className="text-down mb-6" />
         <h2 className="text-3xl font-semibold mb-3 tracking-tight text-ink">Clearance Required</h2>
         <p className="text-dim mb-8">You do not have master admin privileges to view this console.</p>
-        <ButtonLink href="/dashboard" variant="secondary">Return to Dashboard</ButtonLink>
+        <Link
+          href="/dashboard"
+          className="inline-flex items-center justify-center rounded-[10px] border border-line bg-transparent px-5 py-2.5 font-medium text-ink transition-all duration-200 hover:border-accent hover:text-accent"
+        >
+          Return to Dashboard
+        </Link>
       </div>
     );
   }

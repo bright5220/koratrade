@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useWallet } from "@/lib/WalletContext";
 import { Panel, cx } from "@/components/ui";
@@ -17,7 +17,16 @@ const ASSETS = [
   { id: "R1", name: "Central Plaza Commercial", cat: "Real Estate", icon: Building2, color: "bg-yellow-500/20 text-yellow-500", desc: "Premium retail space in high-footfall metropolitan district.", min: 1000, price: 5000.00, risk: "LOW", yield: "8% per year" },
 ];
 
+// useSearchParams() needs a Suspense boundary for the static export build
 export default function InvestPage() {
+  return (
+    <Suspense fallback={null}>
+      <InvestContent />
+    </Suspense>
+  );
+}
+
+function InvestContent() {
   const searchParams = useSearchParams();
   const { usdBalance, setUsdBalance, coinBalances, investments, setInvestments } = useWallet();
   const [activeCat, setActiveCat] = useState<Category>("All");

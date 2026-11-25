@@ -8,6 +8,23 @@ export function cx(...classes: (string | undefined | null | false)[]) {
 }
 
 /**
+ * Logo: the VaultX dial mark, with or without the wordmark
+ */
+export function Logo({ compact = false }: { compact?: boolean }) {
+  return (
+    <span className="flex items-center gap-2.5">
+      <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+        <circle cx="14" cy="14" r="12.5" fill="none" stroke="#7c5cff" strokeWidth="1.5" />
+        <circle cx="14" cy="14" r="8" fill="none" stroke="#7c5cff" strokeOpacity="0.45" />
+        <path d="M14 4.5v4M14 19.5v4M4.5 14h4M19.5 14h4" stroke="#7c5cff" strokeWidth="1.5" />
+        <circle cx="14" cy="14" r="2" fill="#7c5cff" />
+      </svg>
+      {!compact && <span className="text-[17px] font-semibold tracking-tight">VaultX</span>}
+    </span>
+  );
+}
+
+/**
  * PageHeader: Used at the top of every major view
  */
 export function PageHeader({ title, description }: { title: string; description?: string }) {
@@ -26,12 +43,14 @@ export function Panel({
   title, 
   aside, 
   children, 
-  className 
+  className,
+  bodyClassName
 }: { 
   title?: string; 
   aside?: React.ReactNode; 
   children: React.ReactNode;
   className?: string;
+  bodyClassName?: string;
 }) {
   return (
     <div className={cx("bg-panel border border-line rounded-[16px] overflow-hidden", className)}>
@@ -41,7 +60,7 @@ export function Panel({
           {aside && <div>{aside}</div>}
         </div>
       )}
-      <div className={cx(title || aside ? "p-6" : "p-0")}>
+      <div className={cx(title || aside ? "p-6" : "p-0", bodyClassName)}>
         {children}
       </div>
     </div>
