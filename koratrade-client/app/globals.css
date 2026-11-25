@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  /* Exodus Dark Theme Colors */
+  --color-void: #0f0c1a;
+  --color-panel: #1a1625;
+  --color-raised: #252133;
+  --color-accent: #7C5CFF;
+  --color-accent-soft: #9b82ff;
+  --color-ink: #ffffff;
+  --color-dim: #a19dad;
+  --color-line: #2a2638;
+  --color-up: #1b5e3a;
+  --color-down: #d93b3b;
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-serif: ui-serif, Georgia, serif;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-ink);
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}

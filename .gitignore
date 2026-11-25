@@ -1,0 +1,11 @@
+# Dependencies in every folder
+node_modules/
+
+# Build output
+.next/
+out/
+
+# Secrets and local files
+.env*
+*.zip
+Claude outputs/
